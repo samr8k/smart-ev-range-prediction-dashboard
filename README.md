@@ -32,7 +32,7 @@ A professional TFT dashboard system for electric scooters and e-bikes that uses 
 
 ### 🔌 Multi-Sensor Integration
 
-- **Power Monitoring:** INA219 (voltage, current, power)
+- **Power Monitoring:** INA238 (voltage, current, power)
 - **Environmental:** BMP280 (altitude, pressure), HDC1080 (temp, humidity)
 - **Motion:** MPU6050 (3-axis accel/gyro, tilt)
 - **Analog:** LDR (light), rain sensor, NTC (battery temp), throttle hall
@@ -48,7 +48,7 @@ A professional TFT dashboard system for electric scooters and e-bikes that uses 
 | ------------------- | ---------------------- | ----------------------- |
 | **Microcontroller** | ESP32 DevKit           | Main processor          |
 | **Display**         | ILI9341/ST7789 240×320 | TFT dashboard           |
-| **Power Monitor**   | INA219 (0x41)          | Voltage/current sensing |
+| **Power Monitor**   | INA238 (0x41)          | Voltage/current sensing |
 | **Altitude Sensor** | BMP280 (0x76)          | Barometric altitude     |
 | **IMU**             | MPU6050 (0x68)         | Acceleration & tilt     |
 | **Climate Sensor**  | HDC1080 (0x40)         | Temperature & humidity  |
@@ -58,7 +58,7 @@ A professional TFT dashboard system for electric scooters and e-bikes that uses 
 
 ```cpp
 // I²C Bus (SDA=21, SCL=22)
-INA219:  0x41  | BMP280:  0x76  | MPU6050: 0x68  | HDC1080: 0x40
+INA238:  0x41  | BMP280:  0x76  | MPU6050: 0x68  | HDC1080: 0x40
 
 // Analog Inputs
 LDR:         GPIO39 | Rain Sensor: GPIO35
@@ -92,7 +92,7 @@ DOUT: GPIO14 | SCLK: GPIO13 | PDWN: GPIO27 | SPEED → GND
 - TFT_eSPI
 - Adafruit_BMP280
 - Adafruit_MPU6050
-- Adafruit_INA219
+- Adafruit_INA238
 - ClosedCube_HDC1080
 - Wire
 ```
@@ -129,14 +129,14 @@ Edit `User_Setup.h` in TFT_eSPI library folder:
 
 | #   | Feature                    | Source                   | Range         |
 | --- | -------------------------- | ------------------------ | ------------- |
-| 0   | `soc_percent`              | INA219 voltage mapping   | 0-100%        |
-| 1   | `energy_efficiency_whkm`   | INA219 power integration | 0.1-50 Wh/km  |
+| 0   | `soc_percent`              | INA238 voltage mapping   | 0-100%        |
+| 1   | `energy_efficiency_whkm`   | INA238 power integration | 0.1-50 Wh/km  |
 | 2   | `precipitation_mm`         | Rain sensor lookup table | 0-20 mm/h     |
 | 3   | `altitude_bmp280_m`        | BMP280 barometric        | -500 to 3000m |
 | 4   | `rain_sensor_value`        | GPIO35 ADC               | 0-4095        |
 | 5   | `ldr_value`                | GPIO39 ADC               | 0-4095        |
 | 6   | `rolling_resistance_coeff` | Rain-based selection     | 0.004-0.020   |
-| 7   | `energy_consumed_wh`       | Cumulative INA219        | 0+ Wh         |
+| 7   | `energy_consumed_wh`       | Cumulative INA238        | 0+ Wh         |
 | 8   | `altitude_change_30s_m`    | BMP280 ring buffer       | -200 to +200m |
 | 9   | `distance_m`               | Speed integration        | 0+ meters     |
 | 10  | `range_consumed_km`        | Distance / 1000          | 0+ km         |
