@@ -1,4 +1,4 @@
-# 🚴‍♂️ TI Smart Range Estimator
+# 🚴‍♂️ Smart EV range prediction dashboard
 
 **AI-Powered EV Range Prediction Dashboard for Electric Vehicles**
 
